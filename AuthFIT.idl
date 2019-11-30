@@ -1,0 +1,14 @@
+/* Compile: idlj -J-Xmx16m -fall AuthFIT.idl
+  if error with memory allocation raises try first 
+  ulimit -v 134217728
+*/
+module ModAuthFIT {
+  typedef sequence<string> List;
+  interface AuthFIT {
+    boolean addUser(in string login,in string password);
+    boolean authUser(in string login, in string password);
+    boolean changePassword(in string login, in string password, in string new_password);
+    boolean deleteUser(in string login, in string password);
+    oneway void shutdown();
+  };
+};
